@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Habitantes" table="habitantes">
+    <indexes>
+      <index name="IDX_8B24F91769EC7CBB" columns="profaciones_id"/>
+      <index name="IDX_8B24F917409490F9" columns="areas_de_trabajos_id"/>
+      <index name="IDX_8B24F917B0CDB722" columns="vocerias_id"/>
+    </indexes>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="nombre" type="string" column="nombre" length="255" nullable="false"/>
+    <field name="segundoNombre" type="string" column="segundo_nombre" length="255" nullable="false"/>
+    <field name="apellido" type="string" column="apellido" length="255" nullable="false"/>
+    <field name="segundoApellido" type="string" column="segundo_apellido" length="255" nullable="false"/>
+    <field name="genero" type="string" column="genero" length="255" nullable="false"/>
+    <field name="nacionalidad" type="string" column="nacionalidad" length="255" nullable="false"/>
+    <field name="cedula" type="string" column="cedula" length="255" nullable="false"/>
+    <field name="empleo" type="string" column="empleo" length="255" nullable="false"/>
+    <field name="fechaNacimiento" type="date" column="fecha_nacimiento" nullable="false"/>
+    <field name="embarazo" type="string" column="embarazo" length="255" nullable="false"/>
+    <field name="parentesco" type="string" column="parentesco" length="255" nullable="false"/>
+    <field name="gradoDeInstruccion" type="string" column="grado_de_instruccion" length="255" nullable="false"/>
+    <field name="cne" type="string" column="cne" length="255" nullable="false"/>
+    <field name="pensionado" type="string" column="pensionado" length="255" nullable="false"/>
+    <field name="tipoDeIngreso" type="string" column="tipo_de_ingreso" length="255" nullable="false"/>
+    <field name="ingresoMensual" type="string" column="ingreso_mensual" length="255" nullable="false"/>
+    <field name="jefeGrupoFamiliar" type="string" column="jefe_grupo_familiar" length="255" nullable="false"/>
+    <field name="edoCivil" type="string" column="edo_civil" length="255" nullable="false"/>
+    <field name="telefonoCelular" type="string" column="telefono_celular" length="255" nullable="false"/>
+    <field name="correoElectronico" type="string" column="correo_electronico" length="255" nullable="false"/>
+    <field name="telefonoOficina" type="string" column="telefono_oficina" length="255" nullable="false"/>
+    <field name="tiempoEnLaComunidad" type="string" column="tiempo_en_la_comunidad" length="255" nullable="false"/>
+    <field name="ubCedula" type="string" column="ub_cedula" nullable="false"/>
+    <field name="upFoto" type="string" column="up_foto" nullable="false"/>
+    <field name="leyPoliticaHabitacional" type="string" column="ley_politica_habitacional" length="255" nullable="false"/>
+    <field name="participaOrganizacion" type="string" column="participa_organizacion" length="255" nullable="false"/>
+    <many-to-one field="profaciones" target-entity="Profesiones">
+      <join-columns>
+        <join-column name="profaciones_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="vocerias" target-entity="Vocerias">
+      <join-columns>
+        <join-column name="vocerias_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="areasDeTrabajos" target-entity="AreasDeTrabajos">
+      <join-columns>
+        <join-column name="areas_de_trabajos_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="discapacidades" target-entity="Discapacidades" inversed-by="habitantes">
+      <join-table name="habitantes_discapacidades">
+        <join-columns>
+          <join-column name="habitantes_id" referenced-column-name="id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="discapacidades_id" referenced-column-name="id"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-many field="enfermedades" target-entity="Enfermedades" mapped-by="habitantes"/>
+  </entity>
+</doctrine-mapping>

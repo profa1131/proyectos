@@ -1,0 +1,159 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+        <h1 class="page-header">Registros Socioeconomico</h1>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Registros Socioeconomico
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <div class="col-sm-6">
+                                <div class="dataTables_length" id="dataTables-example_length">
+                                    <label>records per page
+                                        <select name="dataTables-example_length" aria-controls="dataTables-example" class="form-control input-sm">
+                                            <option value="10">10</option>
+                                            <option value="25">25</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select> </label>
+                                </div>
+                            </div>
+                            <div class=" col-md-offset-9 ">
+                                <div id="dataTables-example_filter" class="dataTables_filter">
+                                    <label>Buscar:
+                                        <input type="search" class="form-control input-sm" aria-controls="dataTables-example">
+                                    </label>
+                                </div>
+                            </div>
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                <!--<th>Ingresofamiliar</th>
+                <th>Actividadcomercialviviendaid</th>-->
+                <th>Habitaciones en la Vivienda</th>
+                <!--<th>Ninoscalle</th>
+                <th>Indigentes</th>
+                <th>Enfermosterminales</th>
+                <th>Discapacitados</th>
+                <th>Terceraedad</th>
+                <th>Ayudasalud</th>
+                <th>Ayudavivienda</th>-->
+                <th>Aguas Blancas</th>
+               <!-- <th>Tanque</th>
+                <th>Ltstanque</th>
+                <th>Tipotanque</th>
+                <th>Pipotes</th>
+                <th>Cuantos</th>
+                <th>Tipopipotes</th>
+                <th>Medidor de Agua</th>-->
+                <th>Gas</th>
+                <!--<th>Empresagas</th>
+                <th>Cantidadcilindros</th>
+                <th>Capacidadcilindro</th>
+                <th>Duracioncilindro</th>
+                <th>Preciocilindro</th>-->
+                <th>Sistema Electrico</th>
+                <!--<th>Medidor</th>
+                <th>Bombillosahorradores</th>
+                <th>Cuantosbobillosnecesita</th>-->
+                <th>Mecanismoinformacionid</th>
+                <th>Organizacionescounitarias</th>
+                <!--<th>Fecha</th>
+                <th>Registrosocioeconomico</th>-->
+                <th>Accion</th>
+                                </tr>
+                            </thead>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+   
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('registrosocioeconomico_show', { 'id': entity.id }) }}">
+                        {{ entity.id }}</a>
+                </td>
+                <td>{{ entity.ingresoFamiliar }}</td>
+                <td>{{ entity.actividadComercialViviendaId }}</td>
+                <td>{{ entity.habitacionesVivienda }}</td>
+                <td>{{ entity.ninosCalle }}</td>
+                <td>{{ entity.indigentes }}</td>
+                <td>{{ entity.enfermosTerminales }}</td>
+                <td>{{ entity.discapacitados }}</td>
+                <td>{{ entity.terceraEdad }}</td>
+                <td>{{ entity.ayudaSalud }}</td>
+                <td>{{ entity.ayudaVivienda }}</td>
+                <td>{{ entity.aguasBlancas }}</td>
+                <td>{{ entity.tanque }}</td>
+                <td>{{ entity.ltsTanque }}</td>
+                <td>{{ entity.tipoTanque }}</td>
+                <td>{{ entity.pipotes }}</td>
+                <td>{{ entity.cuantos }}</td>
+                <td>{{ entity.tipoPipotes }}</td>
+                <td>{{ entity.medidorAgua }}</td>
+                <td>{{ entity.gas }}</td>
+                <td>{{ entity.empresaGas }}</td>
+                <td>{{ entity.cantidadCilindros }}</td>
+                <td>{{ entity.capacidadCilindro }}</td>
+                <td>{{ entity.duracionCilindro }}</td>
+                <td>{{ entity.precioCilindro }}</td>
+                <td>{{ entity.sistemaElectrico }}</td>
+                <td>{{ entity.medidor }}</td>
+                <td>{{ entity.bombillosAhorradores }}</td>
+                <td>{{ entity.cuantosBobillosNecesita }}</td>
+                <td>{{ entity.mecanismoInformacionId }}</td>
+                <td>{{ entity.organizacionesCounitarias }}</td>-->
+                <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.registroSocioeconomico }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('registrosocioeconomico_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('registrosocioeconomico_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <div class="col-md-offset-7">
+    <div id="dataTables-example_paginate" class="dataTables_paginate paging_simple_numbers">
+        <ul class="pagination">
+            <li id="dataTables-example_previous" tabindex="0" aria-controls="dataTables-example" class="paginate_button previous">
+                <a href="#">Previous</a>
+            </li>
+            <li tabindex="0" aria-controls="dataTables-example" class="paginate_button "><a href="#">1</a></li>
+            <li tabindex="0" aria-controls="dataTables-example" class="paginate_button "><a href="#">2</a></li>
+            <li tabindex="0" aria-controls="dataTables-example" class="paginate_button "><a href="#">3</a></li>
+            <li tabindex="0" aria-controls="dataTables-example" class="paginate_button "><a href="#">4</a></li>
+            <li tabindex="0" aria-controls="dataTables-example" class="paginate_button "><a href="#">5</a></li>
+            <li tabindex="0" aria-controls="dataTables-example" class="paginate_button "><a href="#">6</a></li>
+            <li id="dataTables-example_next" tabindex="0" aria-controls="dataTables-example" class="paginate_button next">
+                <a href="#">Next</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<ul>
+
+    <a class="btn btn-success" href="{{ path('registrosocioeconomico_new') }}">Agregar nuevo Registro Socioeconomico </a>
+
+
+</ul>
+
+{% endblock %}
+

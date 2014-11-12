@@ -1,0 +1,103 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1 class="page-header, fi-torsos-all-female">Listado de Familias</h1>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Datos de Familias 
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <div class="col-sm-6">
+                                <div class="dataTables_length" id="dataTables-example_length">
+                                    <label>records per page
+                                        <select name="dataTables-example_length" aria-controls="dataTables-example" class="form-control input-sm">
+                                            <option value="10">10</option>
+                                            <option value="25">25</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select> </label>
+                                </div>
+                            </div>
+                            <div class=" col-md-offset-9 ">
+                                <div id="dataTables-example_filter" class="dataTables_filter">
+                                    <label>Buscar:
+                                        <input type="search" class="form-control input-sm" aria-controls="dataTables-example">
+                                    </label>
+                                </div>
+                            </div>
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Apellidos</th>
+                                    <th>Telefono local</th>
+                                    <th>Direccion</th>
+                                    <th>Sector</th>
+                                    <th>Nombre de la comunidad</th>
+                                    <th>Accion</th>
+                                </tr>
+                            </thead>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <tbody>
+        {% for entity in entities %}
+
+            <tr class="odd gradeX">
+                <td><a href="{{ path('familias_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.apellidos }}</td>
+                <td>{{ entity.telefonoLocal }}</td>
+                <td>{{ entity.direccion }}</td>
+                <td>{{ entity.sector }}</td>
+                <td>{{ entity.nombresComunidad }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('familias_show', { 'id': entity.id }) }}">Mostra</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('familias_edit', { 'id': entity.id }) }}">Editar</a>
+                        </li>
+                    </ul></td>
+            </tr>
+
+        {% endfor %}
+    </tbody>
+
+</table>
+
+<div class="col-md-offset-7">
+    <div id="dataTables-example_paginate" class="dataTables_paginate paging_simple_numbers">
+        <ul class="pagination">
+            <li id="dataTables-example_previous" tabindex="0" aria-controls="dataTables-example" class="paginate_button previous">
+                <a href="#">Previous</a>
+            </li>
+            <li tabindex="0" aria-controls="dataTables-example" class="paginate_button "><a href="#">1</a></li>
+            <li tabindex="0" aria-controls="dataTables-example" class="paginate_button "><a href="#">2</a></li>
+            <li tabindex="0" aria-controls="dataTables-example" class="paginate_button "><a href="#">3</a></li>
+            <li tabindex="0" aria-controls="dataTables-example" class="paginate_button "><a href="#">4</a></li>
+            <li tabindex="0" aria-controls="dataTables-example" class="paginate_button "><a href="#">5</a></li>
+            <li tabindex="0" aria-controls="dataTables-example" class="paginate_button "><a href="#">6</a></li>
+            <li id="dataTables-example_next" tabindex="0" aria-controls="dataTables-example" class="paginate_button next">
+                <a href="#">Next</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<ul>
+
+    <a class="btn btn-success" href="{{ path('familias_new') }}">Agregar nueva Familia </a>
+
+
+</ul>
+
+{% endblock %}

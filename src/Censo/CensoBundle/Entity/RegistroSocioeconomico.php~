@@ -1,0 +1,462 @@
+<?php
+
+namespace Censo\CensoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * RegistroSocioeconomico
+ *
+ * @ORM\Table(name="registro_socioeconomico", indexes={@ORM\Index(name="IDX_637EBCFABED92726", columns={"recoleccion_basura_id"}), @ORM\Index(name="IDX_637EBCFAB93B4618", columns={"aguas_servidas_id"}), @ORM\Index(name="IDX_637EBCFA94784347", columns={"condiciones_salubridad_id"}), @ORM\Index(name="IDX_637EBCFA93C71764", columns={"forma_tenencias"}), @ORM\Index(name="IDX_637EBCFA379EDFD1", columns={"condicion_terreno_id"}), @ORM\Index(name="IDX_637EBCFAB7C04F60", columns={"tipo_viviendas_id"}), @ORM\Index(name="IDX_637EBCFAA87E6A14", columns={"familias_id"})})
+ * @ORM\Entity
+ */
+class RegistroSocioeconomico
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="registro_socioeconomico_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ingreso_familiar", type="string", length=255, nullable=false)
+     */
+    private $ingresoFamiliar;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="actividad_comercial_vivienda_id", type="bigint", nullable=false)
+     */
+    private $actividadComercialViviendaId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="habitaciones_vivienda", type="string", nullable=false)
+     */
+    private $habitacionesVivienda;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ninos_calle", type="string", length=255, nullable=false)
+     */
+    private $ninosCalle;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="indigentes", type="string", length=255, nullable=false)
+     */
+    private $indigentes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="enfermos_terminales", type="string", length=255, nullable=false)
+     */
+    private $enfermosTerminales;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="discapacitados", type="string", length=255, nullable=false)
+     */
+    private $discapacitados;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tercera_edad", type="string", length=255, nullable=false)
+     */
+    private $terceraEdad;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ayuda_salud", type="string", length=255, nullable=false)
+     */
+    private $ayudaSalud;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ayuda_vivienda", type="string", length=255, nullable=false)
+     */
+    private $ayudaVivienda;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="aguas_blancas", type="string", length=255, nullable=false)
+     */
+    private $aguasBlancas;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tanque", type="string", length=255, nullable=false)
+     */
+    private $tanque;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lts_tanque", type="string", length=255, nullable=false)
+     */
+    private $ltsTanque;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipo_tanque", type="string", length=255, nullable=false)
+     */
+    private $tipoTanque;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pipotes", type="string", length=255, nullable=false)
+     */
+    private $pipotes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cuantos", type="string", length=255, nullable=false)
+     */
+    private $cuantos;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipo_pipotes", type="string", length=255, nullable=false)
+     */
+    private $tipoPipotes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="medidor_agua", type="string", length=255, nullable=false)
+     */
+    private $medidorAgua;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="gas", type="string", length=255, nullable=false)
+     */
+    private $gas;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="empresa_gas", type="string", length=255, nullable=false)
+     */
+    private $empresaGas;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cantidad_cilindros", type="string", length=255, nullable=false)
+     */
+    private $cantidadCilindros;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="capacidad_cilindro", type="string", length=255, nullable=false)
+     */
+    private $capacidadCilindro;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="duracion_cilindro", type="string", length=255, nullable=false)
+     */
+    private $duracionCilindro;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="precio_cilindro", type="string", length=255, nullable=false)
+     */
+    private $precioCilindro;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sistema_electrico", type="string", length=255, nullable=false)
+     */
+    private $sistemaElectrico;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="medidor", type="string", length=255, nullable=false)
+     */
+    private $medidor;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="bombillos_ahorradores", type="string", length=255, nullable=false)
+     */
+    private $bombillosAhorradores;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cuantos_bobillos_necesita", type="string", length=255, nullable=false)
+     */
+    private $cuantosBobillosNecesita;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="mecanismo_informacion_id", type="bigint", nullable=false)
+     */
+    private $mecanismoInformacionId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="organizaciones_counitarias", type="string", length=255, nullable=false)
+     */
+    private $organizacionesCounitarias;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha", type="date", nullable=true)
+     */
+    private $fecha;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="registro_socioeconomico", type="string", length=10, nullable=false)
+     */
+    private $registroSocioeconomico;
+
+    /**
+     * @var \RecoleccionBasura
+     *
+     * @ORM\ManyToOne(targetEntity="RecoleccionBasura")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="recoleccion_basura_id", referencedColumnName="id")
+     * })
+     */
+    private $recoleccionBasura;
+
+    /**
+     * @var \AguasServidas
+     *
+     * @ORM\ManyToOne(targetEntity="AguasServidas")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="aguas_servidas_id", referencedColumnName="id")
+     * })
+     */
+    private $aguasServidas;
+
+    /**
+     * @var \CondicionesSalubridad
+     *
+     * @ORM\ManyToOne(targetEntity="CondicionesSalubridad")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="condiciones_salubridad_id", referencedColumnName="id")
+     * })
+     */
+    private $condicionesSalubridad;
+
+    /**
+     * @var \FormaTenencias
+     *
+     * @ORM\ManyToOne(targetEntity="FormaTenencias")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="forma_tenencias", referencedColumnName="id")
+     * })
+     */
+    private $formaTenencias;
+
+    /**
+     * @var \CondicionTerrenos
+     *
+     * @ORM\ManyToOne(targetEntity="CondicionTerrenos")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="condicion_terreno_id", referencedColumnName="id")
+     * })
+     */
+    private $condicionTerreno;
+
+    /**
+     * @var \TipoViviendas
+     *
+     * @ORM\ManyToOne(targetEntity="TipoViviendas")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tipo_viviendas_id", referencedColumnName="id")
+     * })
+     */
+    private $tipoViviendas;
+
+    /**
+     * @var \Familias
+     *
+     * @ORM\ManyToOne(targetEntity="Familias")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="familias_id", referencedColumnName="id")
+     * })
+     */
+    private $familias;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Telefonias", mappedBy="registroSocioeconomico")
+     */
+    private $telefonias;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Misiones", mappedBy="registroSocioeconomico")
+     */
+    private $misiones;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Transportes", inversedBy="registroSocioeconomico")
+     * @ORM\JoinTable(name="registro_transporte",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="registro_socioeconomico_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="transporte_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $transporte;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Plagas", inversedBy="registroSocioeconomico")
+     * @ORM\JoinTable(name="registro_plagas",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="registro_socioeconomico_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="plagas_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $plagas;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="ServiciosComunales", mappedBy="registroSocioeconomico")
+     */
+    private $serviciosComunales;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="TipoTechos", mappedBy="registroSocioeconomico")
+     */
+    private $tipoTechos;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="MecanismosInformacion", inversedBy="registroSocioeconomico")
+     * @ORM\JoinTable(name="registro_mecanismos_informacion",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="registro_socioeconomico_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="mecanismos_informacion_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $mecanismosInformacion;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Animales", inversedBy="registroSocioeconomico")
+     * @ORM\JoinTable(name="registro_animales",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="registro_socioeconomico_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="animales_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $animales;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="ActividadComercialVivienda", mappedBy="rgistroSocioeconomico")
+     */
+    private $actividadComercial;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Enseres", inversedBy="registroSocioeconomico")
+     * @ORM\JoinTable(name="registro_enseres",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="registro_socioeconomico_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="enseres_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $enseres;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="TipoParedes", mappedBy="registroSocioeconomico")
+     */
+    private $tipoParedes;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Preguntas", mappedBy="registroSocioeconomico")
+     */
+    private $preguntas;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->telefonias = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->misiones = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->transporte = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->plagas = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->serviciosComunales = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tipoTechos = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->mecanismosInformacion = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->animales = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->actividadComercial = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->enseres = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tipoParedes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->preguntas = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}

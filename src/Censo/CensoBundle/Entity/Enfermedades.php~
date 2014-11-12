@@ -1,0 +1,55 @@
+<?php
+
+namespace Censo\CensoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Enfermedades
+ *
+ * @ORM\Table(name="enfermedades")
+ * @ORM\Entity
+ */
+class Enfermedades
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="enfermedades_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=255, nullable=false)
+     */
+    private $nombre;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Habitantes", inversedBy="enfermedades")
+     * @ORM\JoinTable(name="habitantes_enfermedades",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="enfermedades_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="habitantes_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $habitantes;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->habitantes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}

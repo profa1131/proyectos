@@ -1,0 +1,26 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+         <h1 class="page-header, fi-torsos-all-female">Editar Familia</h1>
+         <ul class="record_actions"></ul>
+            <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Editar Familia
+                </div>
+                <div class="panel-body">
+                    <p>
+    
+        {{ form(edit_form) }} 
+        
+       <a class="btn btn-primary" href="{{ path('familias') }}">Volver a la Lista </a>
+          
+   
+    {{ form(delete_form) }}</p>
+                </div>
+            </div>
+        </div>
+
+   
+   
+{% endblock %}

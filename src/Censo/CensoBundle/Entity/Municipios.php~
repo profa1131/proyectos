@@ -1,0 +1,43 @@
+<?php
+
+namespace Censo\CensoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Municipios
+ *
+ * @ORM\Table(name="municipios", indexes={@ORM\Index(name="IDX_BBFAB586703C3EE9", columns={"estados_id"})})
+ * @ORM\Entity
+ */
+class Municipios
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="municipios_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=255, nullable=false)
+     */
+    private $nombre;
+
+    /**
+     * @var \Estados
+     *
+     * @ORM\ManyToOne(targetEntity="Estados")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="estados_id", referencedColumnName="id")
+     * })
+     */
+    private $estados;
+
+
+}

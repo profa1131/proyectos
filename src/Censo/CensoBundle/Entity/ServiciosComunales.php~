@@ -1,0 +1,55 @@
+<?php
+
+namespace Censo\CensoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ServiciosComunales
+ *
+ * @ORM\Table(name="servicios_comunales")
+ * @ORM\Entity
+ */
+class ServiciosComunales
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="servicios_comunales_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=255, nullable=false)
+     */
+    private $nombre;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="RegistroSocioeconomico", inversedBy="serviciosComunales")
+     * @ORM\JoinTable(name="registro_servicios_comunales",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="servicios_comunales_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="registro_socioeconomico_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $registroSocioeconomico;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->registroSocioeconomico = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Familias" table="familias">
+    <indexes>
+      <index name="IDX_FD33FAC88655CE6B" columns="habitantes_id"/>
+      <index name="IDX_FD33FAC838EC4CA0" columns="concejos_comunales_id"/>
+    </indexes>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="apellidos" type="string" column="apellidos" length="255" nullable="true"/>
+    <field name="telefonoLocal" type="string" column="telefono_local" length="255" nullable="false"/>
+    <field name="direccion" type="string" column="direccion" length="255" nullable="false"/>
+    <field name="sector" type="string" column="sector" length="255" nullable="false"/>
+    <field name="nombresComunidad" type="string" column="nombres_comunidad" length="255" nullable="false"/>
+    <many-to-one field="concejosComunales" target-entity="ConsejosComunales">
+      <join-columns>
+        <join-column name="concejos_comunales_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="habitantes" target-entity="Habitantes">
+      <join-columns>
+        <join-column name="habitantes_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

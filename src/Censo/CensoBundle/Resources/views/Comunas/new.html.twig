@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+   <h1 class="page-header, fi-">Agregar Comuna</h1>
+    <ul class="record_actions"></ul>
+    <div class="col-lg-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Agregar Comunas
+            </div>
+            <div class="panel-body">
+                <p>
+    {{ form(form) }}
+
+        <a class="btn btn-primary" href="{{ path('comunas') }}">Volver a la Lista </a>
+        
+    </p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

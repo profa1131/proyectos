@@ -1,0 +1,45 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Comunas</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Direccion</th>
+                <th>Rif</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('comunas_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.nombre }}</td>
+                <td>{{ entity.direccion }}</td>
+                <td>{{ entity.rif }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('comunas_show', { 'id': entity.id }) }}">Editar</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('comunas_edit', { 'id': entity.id }) }}">Mostrar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('comunas_new') }}">
+              Agregar Nueva
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

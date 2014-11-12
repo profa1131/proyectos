@@ -1,0 +1,156 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>RegistroSocioeconomico</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Ingresofamiliar</th>
+                <td>{{ entity.ingresoFamiliar }}</td>
+            </tr>
+            <tr>
+                <th>Actividadcomercialviviendaid</th>
+                <td>{{ entity.actividadComercialViviendaId }}</td>
+            </tr>
+            <tr>
+                <th>Habitacionesvivienda</th>
+                <td>{{ entity.habitacionesVivienda }}</td>
+            </tr>
+            <tr>
+                <th>Ninoscalle</th>
+                <td>{{ entity.ninosCalle }}</td>
+            </tr>
+            <tr>
+                <th>Indigentes</th>
+                <td>{{ entity.indigentes }}</td>
+            </tr>
+            <tr>
+                <th>Enfermosterminales</th>
+                <td>{{ entity.enfermosTerminales }}</td>
+            </tr>
+            <tr>
+                <th>Discapacitados</th>
+                <td>{{ entity.discapacitados }}</td>
+            </tr>
+            <tr>
+                <th>Terceraedad</th>
+                <td>{{ entity.terceraEdad }}</td>
+            </tr>
+            <tr>
+                <th>Ayudasalud</th>
+                <td>{{ entity.ayudaSalud }}</td>
+            </tr>
+            <tr>
+                <th>Ayudavivienda</th>
+                <td>{{ entity.ayudaVivienda }}</td>
+            </tr>
+            <tr>
+                <th>Aguasblancas</th>
+                <td>{{ entity.aguasBlancas }}</td>
+            </tr>
+            <tr>
+                <th>Tanque</th>
+                <td>{{ entity.tanque }}</td>
+            </tr>
+            <tr>
+                <th>Ltstanque</th>
+                <td>{{ entity.ltsTanque }}</td>
+            </tr>
+            <tr>
+                <th>Tipotanque</th>
+                <td>{{ entity.tipoTanque }}</td>
+            </tr>
+            <tr>
+                <th>Pipotes</th>
+                <td>{{ entity.pipotes }}</td>
+            </tr>
+            <tr>
+                <th>Cuantos</th>
+                <td>{{ entity.cuantos }}</td>
+            </tr>
+            <tr>
+                <th>Tipopipotes</th>
+                <td>{{ entity.tipoPipotes }}</td>
+            </tr>
+            <tr>
+                <th>Medidoragua</th>
+                <td>{{ entity.medidorAgua }}</td>
+            </tr>
+            <tr>
+                <th>Gas</th>
+                <td>{{ entity.gas }}</td>
+            </tr>
+            <tr>
+                <th>Empresagas</th>
+                <td>{{ entity.empresaGas }}</td>
+            </tr>
+            <tr>
+                <th>Cantidadcilindros</th>
+                <td>{{ entity.cantidadCilindros }}</td>
+            </tr>
+            <tr>
+                <th>Capacidadcilindro</th>
+                <td>{{ entity.capacidadCilindro }}</td>
+            </tr>
+            <tr>
+                <th>Duracioncilindro</th>
+                <td>{{ entity.duracionCilindro }}</td>
+            </tr>
+            <tr>
+                <th>Preciocilindro</th>
+                <td>{{ entity.precioCilindro }}</td>
+            </tr>
+            <tr>
+                <th>Sistemaelectrico</th>
+                <td>{{ entity.sistemaElectrico }}</td>
+            </tr>
+            <tr>
+                <th>Medidor</th>
+                <td>{{ entity.medidor }}</td>
+            </tr>
+            <tr>
+                <th>Bombillosahorradores</th>
+                <td>{{ entity.bombillosAhorradores }}</td>
+            </tr>
+            <tr>
+                <th>Cuantosbobillosnecesita</th>
+                <td>{{ entity.cuantosBobillosNecesita }}</td>
+            </tr>
+            <tr>
+                <th>Mecanismoinformacionid</th>
+                <td>{{ entity.mecanismoInformacionId }}</td>
+            </tr>
+            <tr>
+                <th>Organizacionescounitarias</th>
+                <td>{{ entity.organizacionesCounitarias }}</td>
+            </tr>
+            <tr>
+                <th>Fecha</th>
+                <td>{{ entity.fecha|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Registrosocioeconomico</th>
+                <td>{{ entity.registroSocioeconomico }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('registrosocioeconomico') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('registrosocioeconomico_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

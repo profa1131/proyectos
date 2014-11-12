@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="RegistroSocioeconomico" table="registro_socioeconomico">
+    <indexes>
+      <index name="IDX_637EBCFABED92726" columns="recoleccion_basura_id"/>
+      <index name="IDX_637EBCFAB93B4618" columns="aguas_servidas_id"/>
+      <index name="IDX_637EBCFA94784347" columns="condiciones_salubridad_id"/>
+      <index name="IDX_637EBCFA93C71764" columns="forma_tenencias"/>
+      <index name="IDX_637EBCFA379EDFD1" columns="condicion_terreno_id"/>
+      <index name="IDX_637EBCFAB7C04F60" columns="tipo_viviendas_id"/>
+      <index name="IDX_637EBCFAA87E6A14" columns="familias_id"/>
+    </indexes>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="ingresoFamiliar" type="string" column="ingreso_familiar" length="255" nullable="false"/>
+    <field name="actividadComercialViviendaId" type="bigint" column="actividad_comercial_vivienda_id" nullable="false"/>
+    <field name="habitacionesVivienda" type="string" column="habitaciones_vivienda" nullable="false"/>
+    <field name="ninosCalle" type="string" column="ninos_calle" length="255" nullable="false"/>
+    <field name="indigentes" type="string" column="indigentes" length="255" nullable="false"/>
+    <field name="enfermosTerminales" type="string" column="enfermos_terminales" length="255" nullable="false"/>
+    <field name="discapacitados" type="string" column="discapacitados" length="255" nullable="false"/>
+    <field name="terceraEdad" type="string" column="tercera_edad" length="255" nullable="false"/>
+    <field name="ayudaSalud" type="string" column="ayuda_salud" length="255" nullable="false"/>
+    <field name="ayudaVivienda" type="string" column="ayuda_vivienda" length="255" nullable="false"/>
+    <field name="aguasBlancas" type="string" column="aguas_blancas" length="255" nullable="false"/>
+    <field name="tanque" type="string" column="tanque" length="255" nullable="false"/>
+    <field name="ltsTanque" type="string" column="lts_tanque" length="255" nullable="false"/>
+    <field name="tipoTanque" type="string" column="tipo_tanque" length="255" nullable="false"/>
+    <field name="pipotes" type="string" column="pipotes" length="255" nullable="false"/>
+    <field name="cuantos" type="string" column="cuantos" length="255" nullable="false"/>
+    <field name="tipoPipotes" type="string" column="tipo_pipotes" length="255" nullable="false"/>
+    <field name="medidorAgua" type="string" column="medidor_agua" length="255" nullable="false"/>
+    <field name="gas" type="string" column="gas" length="255" nullable="false"/>
+    <field name="empresaGas" type="string" column="empresa_gas" length="255" nullable="false"/>
+    <field name="cantidadCilindros" type="string" column="cantidad_cilindros" length="255" nullable="false"/>
+    <field name="capacidadCilindro" type="string" column="capacidad_cilindro" length="255" nullable="false"/>
+    <field name="duracionCilindro" type="string" column="duracion_cilindro" length="255" nullable="false"/>
+    <field name="precioCilindro" type="string" column="precio_cilindro" length="255" nullable="false"/>
+    <field name="sistemaElectrico" type="string" column="sistema_electrico" length="255" nullable="false"/>
+    <field name="medidor" type="string" column="medidor" length="255" nullable="false"/>
+    <field name="bombillosAhorradores" type="string" column="bombillos_ahorradores" length="255" nullable="false"/>
+    <field name="cuantosBobillosNecesita" type="string" column="cuantos_bobillos_necesita" length="255" nullable="false"/>
+    <field name="mecanismoInformacionId" type="bigint" column="mecanismo_informacion_id" nullable="false"/>
+    <field name="organizacionesCounitarias" type="string" column="organizaciones_counitarias" length="255" nullable="false"/>
+    <field name="fecha" type="date" column="fecha" nullable="true"/>
+    <field name="registroSocioeconomico" type="string" column="registro_socioeconomico" length="10" nullable="false"/>
+    <many-to-one field="tipoViviendas" target-entity="TipoViviendas">
+      <join-columns>
+        <join-column name="tipo_viviendas_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="recoleccionBasura" target-entity="RecoleccionBasura">
+      <join-columns>
+        <join-column name="recoleccion_basura_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="condicionTerreno" target-entity="CondicionTerrenos">
+      <join-columns>
+        <join-column name="condicion_terreno_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="familias" target-entity="Familias">
+      <join-columns>
+        <join-column name="familias_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="aguasServidas" target-entity="AguasServidas">
+      <join-columns>
+        <join-column name="aguas_servidas_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="condicionesSalubridad" target-entity="CondicionesSalubridad">
+      <join-columns>
+        <join-column name="condiciones_salubridad_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="formaTenencias" target-entity="FormaTenencias">
+      <join-columns>
+        <join-column name="forma_tenencias" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="animales" target-entity="Animales" inversed-by="registroSocioeconomico">
+      <join-table name="registro_animales">
+        <join-columns>
+          <join-column name="registro_socioeconomico_id" referenced-column-name="id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="animales_id" referenced-column-name="id"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-many field="enseres" target-entity="Enseres" inversed-by="registroSocioeconomico">
+      <join-table name="registro_enseres">
+        <join-columns>
+          <join-column name="registro_socioeconomico_id" referenced-column-name="id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="enseres_id" referenced-column-name="id"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-many field="actividadComercial" target-entity="ActividadComercialVivienda" mapped-by="rgistroSocioeconomico"/>
+    <many-to-many field="tipoParedes" target-entity="TipoParedes" mapped-by="registroSocioeconomico"/>
+    <many-to-many field="mecanismosInformacion" target-entity="MecanismosInformacion" inversed-by="registroSocioeconomico">
+      <join-table name="registro_mecanismos_informacion">
+        <join-columns>
+          <join-column name="registro_socioeconomico_id" referenced-column-name="id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="mecanismos_informacion_id" referenced-column-name="id"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-many field="preguntas" target-entity="Preguntas" mapped-by="registroSocioeconomico"/>
+    <many-to-many field="transporte" target-entity="Transportes" inversed-by="registroSocioeconomico">
+      <join-table name="registro_transporte">
+        <join-columns>
+          <join-column name="registro_socioeconomico_id" referenced-column-name="id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="transporte_id" referenced-column-name="id"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-many field="telefonias" target-entity="Telefonias" mapped-by="registroSocioeconomico"/>
+    <many-to-many field="misiones" target-entity="Misiones" mapped-by="registroSocioeconomico"/>
+    <many-to-many field="plagas" target-entity="Plagas" inversed-by="registroSocioeconomico">
+      <join-table name="registro_plagas">
+        <join-columns>
+          <join-column name="registro_socioeconomico_id" referenced-column-name="id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="plagas_id" referenced-column-name="id"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-many field="serviciosComunales" target-entity="ServiciosComunales" mapped-by="registroSocioeconomico"/>
+    <many-to-many field="tipoTechos" target-entity="TipoTechos" mapped-by="registroSocioeconomico"/>
+  </entity>
+</doctrine-mapping>
